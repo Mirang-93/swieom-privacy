@@ -3,7 +3,9 @@
 import re, sys, pathlib, markdown
 
 SRC, OUT = map(pathlib.Path, sys.argv[1:3])
-NAME, MAIL = 'Mirang', 'wnshroqkf@naver.com'
+NAME, MAIL = 'Kim Junho (Mirang)', 'wnshroqkf@naver.com'
+KO_NAME = '김준호(Mirang)'
+ADDR_EN = '3F, 41, Gwongwang-ro 56beon-gil, Gwonseon-gu, Suwon-si, Gyeonggi-do, Republic of Korea'
 BASE = 'https://mirang-93.github.io/swieom-privacy/'
 # 언어 코드 → (출력 파일, html lang, 링크 이름, 제목)
 LANGS = {
@@ -19,7 +21,7 @@ def other_langs(code):
 
 FILL = {
     'ko': [
-        ('[운영자 이름]', NAME), ('[개인정보 문의 이메일]', MAIL), ('[성명]', NAME),
+        ('[운영자 이름]', KO_NAME), ('[개인정보 문의 이메일]', MAIL), ('[성명]', '김준호'),
         ('- 전화: [전화번호 — 선택]\n', ''),
         ('[ ]개월', '3개월'),
         ('| [메일 서비스 회사 이름] |', '| 네이버 주식회사 |'),
@@ -50,7 +52,7 @@ FILL = {
         ('[施行日]', '2026年10月13日'), ('版 1.1', '版 1.0'),
     ],
     'zh-Hant': [
-        ('[營運者名稱]，[地址]，電子郵件 [個資聯絡信箱]', f'{NAME}（大韓民國；地址於請求時盡速提供），電子郵件 {MAIL}'),
+        ('[營運者名稱]，[地址]，電子郵件 [個資聯絡信箱]', f'{NAME}，地址 {ADDR_EN}，電子郵件 {MAIL}'),
         ('[營運者名稱]', NAME), ('[個資聯絡信箱]', MAIL), ('[ ] 個月', '3 個月'),
         ('韓國（營運者），[郵件服務所在國家]（電子郵件服務）', '韓國（營運者與電子郵件服務）'),
         ('[郵件服務業者名稱]', 'NAVER Corporation'),
@@ -59,7 +61,7 @@ FILL = {
     ],
     'fr': [
         ('[nom de l\'éditeur], [adresse], [e-mail de contact vie privée].',
-         f'{NAME} (République de Corée ; adresse communiquée sur demande), {MAIL}.'),
+         f'{NAME}, {ADDR_EN}, {MAIL}.'),
         ('[Représentant dans l\'UE (article 27 du RGPD) : nom et adresse — ou supprimer cette phrase si l\'exemption de l\'article 27(2) est confirmée.]\n', ''),
         ('[nom de l\'éditeur]', NAME), ('[e-mail de contact vie privée]', MAIL), ('[ ] mois', '3 mois'),
         ('[prestataire e-mail] ([pays])', 'NAVER Corporation (République de Corée)'),
