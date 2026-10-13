@@ -5,7 +5,7 @@ import re, sys, pathlib, markdown
 SRC, OUT = map(pathlib.Path, sys.argv[1:3])
 NAME, MAIL = 'Kim Junho (Mirang)', 'wnshroqkf@naver.com'
 KO_NAME = '김준호(Mirang)'
-ADDR_EN = '3F, 41, Gwongwang-ro 56beon-gil, Gwonseon-gu, Suwon-si, Gyeonggi-do, Republic of Korea'
+ADDR_EN = '3F, 41 Gwongwang-ro 56beon-gil, Gwonseon-gu, Suwon-si, Gyeonggi-do 16556, Republic of Korea'
 BASE = 'https://mirang-93.github.io/swieom-privacy/'
 # 언어 코드 → (출력 파일, html lang, 링크 이름, 제목)
 LANGS = {
