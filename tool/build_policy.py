@@ -27,9 +27,7 @@ FILL = {
         ('| [메일 서비스 회사 이름] |', '| 네이버 주식회사 |'),
         ('[2단계 인증 등 실제 조치]', '2단계 인증'),
         ('[수사기관 이름·연락처 — 게시 직전 재확인]', '대검찰청: 국번 없이 1301 (www.spo.go.kr)'),
-        ('- 버전 1.1 · 시행 [시행일] (1.0 대비: 결제 국가·결제 전 동의 기록, 광고 동의 화면과 \'광고 개인정보 설정\' 추가)',
-         '- 버전 1.0 · 시행 2026년 10월 13일'),
-        ('[시행일]', '2026년 10월 13일'),
+        ('[시행일]', '2026년 10월 15일'),
     ],
     'en': [
         ('[operator name]', NAME), ('[privacy email]', MAIL), ('[ ] months', '3 months'),
@@ -41,7 +39,7 @@ FILL = {
          'protection (adequacy decision of 17 December 2021); Google relies on the transfer safeguards '
          'described in its own privacy policy.'),
         (' [EU representative: name and address — or delete this sentence if not required.]', ''),
-        ('[effective date]', '13 October 2026'), ('Version 1.1', 'Version 1.0'),
+        ('[effective date]', '15 October 2026'),
     ],
     'ja': [
         ('[運営者名]', NAME), ('[個人情報お問い合わせメール]', MAIL),
@@ -49,7 +47,7 @@ FILL = {
         ('[ ] か月', '3 か月'),
         ('[メールサービス事業者名]（所在国：[国名]）', 'NAVER Corporation（所在国：大韓民国）'),
         ('[二段階認証など実際の措置]', '二段階認証'),
-        ('[施行日]', '2026年10月13日'), ('版 1.1', '版 1.0'),
+        ('[施行日]', '2026年10月15日'),
     ],
     'zh-Hant': [
         ('[營運者名稱]，[地址]，電子郵件 [個資聯絡信箱]', f'{NAME}，地址 {ADDR_EN}，電子郵件 {MAIL}'),
@@ -57,7 +55,7 @@ FILL = {
         ('韓國（營運者），[郵件服務所在國家]（電子郵件服務）', '韓國（營運者與電子郵件服務）'),
         ('[郵件服務業者名稱]', 'NAVER Corporation'),
         ('[兩步驟驗證等實際措施]', '兩步驟驗證'),
-        ('[施行日]', '2026 年 10 月 13 日'), ('版本 1.1', '版本 1.0'),
+        ('[施行日]', '2026 年 10 月 15 日'),
     ],
     'fr': [
         ('[nom de l\'éditeur], [adresse], [e-mail de contact vie privée].',
@@ -70,7 +68,7 @@ FILL = {
          'décision d\'adéquation de la Commission européenne pour la République de Corée (17 décembre 2021) ; '
          'pour Google, les garanties décrites dans ses propres règles de confidentialité'),
         ('[mesures réelles, ex. validation en deux étapes]', 'la validation en deux étapes'),
-        ('[date d\'entrée en vigueur]', '13 octobre 2026'), ('Version 1.1', 'Version 1.0'),
+        ('[date d\'entrée en vigueur]', '15 octobre 2026'),
     ],
 }
 
@@ -101,6 +99,8 @@ def build(code):
     lines = md.split('\n')
     md = '\n'.join(l if not (item.match(l) and i and lines[i-1].strip() and not item.match(lines[i-1]))
                     else '\n' + l for i, l in enumerate(lines))
+    # 버전 치환('Version 1.1'→'1.0' 등)이 남아 있으면 이력 줄이 사라진다 → 실패
+    assert re.search(r'1\.1\D{1,6}(시행|施行|effective|en vigueur)', md), (code, 'v1.1 이력 줄 없음')
     left = [m for m in re.findall(r'\[[^\]]*\](?!\()', md)]
     assert not left, (code, left)
     body = markdown.markdown(md, extensions=['tables'])

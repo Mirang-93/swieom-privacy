@@ -65,12 +65,12 @@ th{background:var(--bg)}</style>
 </thead>
 <tbody>
 <tr>
-<td>Historique de jeu : date d'installation, jours de présence, nombre total de parties, meilleur score par jeu, numéros de problèmes résolus par jeu, échecs consécutifs par jeu, les 3 jeux du « Jeu du jour » et leur avancement</td>
+<td>Historique de jeu : date d'installation, jours de présence, nombre total de parties, meilleur score par jeu, numéros de problèmes résolus par jeu, échecs consécutifs par jeu, les 5 jeux du « Jeu du jour » et leur avancement</td>
 <td>Afficher l'historique, la présence, la progression de difficulté, les chances supplémentaires, reprendre le Jeu du jour</td>
 </tr>
 <tr>
-<td>Réglages et état du téléphone : son activé ou non, achat confirmé ou en attente, nombre et date des reprises avec publicité, date de la publicité au démarrage, date de dernière utilisation</td>
-<td>Garder les réglages et l'état d'achat, appliquer les limites de publicité</td>
+<td>Réglages et état du téléphone : son activé ou non, achat confirmé ou en attente, nombre et date des reprises avec publicité et des parties de plus avec publicité, partie obtenue en regardant une publicité mais pas encore commencée, date de la publicité au démarrage, date de dernière utilisation</td>
+<td>Garder les réglages et l'état d'achat, appliquer les limites de publicité, conserver une partie obtenue même si l'application se ferme</td>
 </tr>
 <tr>
 <td>Pays de facturation Google Play (code à 2 lettres)</td>
@@ -90,7 +90,7 @@ th{background:var(--bg)}</style>
 <h2>4. Durées de conservation</h2>
 <ul>
 <li>E-mails liés à un achat : conservés pendant la durée de conservation des preuves de transaction (contrat et rétractation 5 ans, paiement et fourniture 5 ans, réclamations 3 ans, durées du droit coréen applicable à l'éditeur), puis supprimés. Autres e-mails : supprimés dans les 3 mois suivant notre réponse.</li>
-<li>Données du téléphone : jusqu'à la suppression de l'application ou <strong>Infos → Effacer l'historique</strong>. « Effacer l'historique » supprime l'historique de jeu (présences, parties, meilleurs scores, problèmes résolus, Jeu du jour). Il ne supprime ni la date d'installation, ni l'état d'achat, ni les compteurs de publicité, ni le pays de facturation, ni la trace de l'accord avant paiement.</li>
+<li>Données du téléphone : jusqu'à la suppression de l'application ou <strong>Infos → Effacer l'historique</strong>. « Effacer l'historique » supprime l'historique de jeu (présences, parties, meilleurs scores, problèmes résolus, Jeu du jour). Il ne supprime ni la date d'installation, ni l'état d'achat, ni les compteurs de publicité (reprises et parties de plus), ni une partie obtenue en regardant une publicité, ni le pays de facturation, ni la trace de l'accord avant paiement.</li>
 <li>Sauvegarde Google : si elle est activée, un seul fichier d'historique de jeu peut être sauvegardé sur votre propre compte Google. L'état d'achat, les compteurs de publicité, le pays de facturation et la trace de l'accord ne sont jamais sauvegardés. Nous ne pouvons pas garantir le retour de l'historique après réinstallation.</li>
 </ul>
 <h2>5. Destinataires et transferts hors de l'UE</h2>
@@ -100,7 +100,7 @@ th{background:var(--bg)}</style>
 </ul>
 <h2>6. Publicité (Google AdMob) et consentement</h2>
 <ol>
-<li>L'application contient Google AdMob (Google Mobile Ads SDK). En utilisation gratuite, une publicité s'affiche au démarrage et lorsque vous regardez une publicité pour reprendre une partie. Il n'y a ni bannière ni publicité interstitielle.</li>
+<li>L'application contient Google AdMob (Google Mobile Ads SDK). En utilisation gratuite, une publicité s'affiche au démarrage, lorsque vous choisissez de regarder une publicité pour reprendre une partie, et lorsque, après le Jeu du jour, vous appuyez sur « Une partie de plus (pub) » (jusqu'à 5 fois par jour). Les publicités pour reprendre ou pour une partie de plus ne s'affichent que si vous appuyez sur le bouton. Il n'y a ni bannière ni publicité interstitielle.</li>
 <li>Le SDK envoie directement à Google LLC (États-Unis et autres pays) votre identifiant publicitaire, l'identifiant d'ensemble d'applications, l'adresse IP (qui peut servir à estimer votre position approximative), les interactions avec l'application (lancements, touches, vidéos publicitaires vues), des données de diagnostic et votre choix de consentement. Google les utilise pour afficher et mesurer les publicités, lutter contre la fraude et, si vous l'acceptez, personnaliser les annonces. Nous ne recevons pas ces données. Google traite ces données selon ses propres règles : <a href="https://policies.google.com/technologies/partner-sites?hl=fr">https://policies.google.com/technologies/partner-sites?hl=fr</a></li>
 <li>À l'ouverture de l'application, le formulaire de consentement de Google (certifié IAB TCF) vous demande votre accord. Vous pouvez utiliser l'application sans consentir ; Google peut alors afficher des annonces non personnalisées ou limitées. Vous pouvez retirer ou modifier votre consentement à tout moment via <strong>Infos → Paramètres de confidentialité publicitaire</strong> (bouton visible tant que vous n'avez pas acheté « Jeu au choix + sans publicité »). Le retrait n'affecte pas la licéité du traitement fondé sur le consentement avant ce retrait.</li>
 <li>Après l'achat de « Jeu au choix + sans publicité », l'application ne demande ni n'affiche plus de publicité. Le SDK reste présent pour les utilisateurs gratuits et peut encore communiquer avec Google au lancement de l'application.</li>
@@ -118,7 +118,53 @@ Vous pouvez introduire une réclamation auprès de la CNIL (www.cnil.fr) ou de l
 <h2>11. Sécurité</h2>
 <p>Nous n'exploitons aucun serveur et ne traitons que le minimum de données. Les données de l'application sont stockées dans un espace que seule l'application peut lire. Nos comptes e-mail et Google Play Console sont protégés par la validation en deux étapes. Selon Google, les données AdMob sont chiffrées en transit (TLS).</p>
 <h2>12. Modifications</h2>
-<p>Cette politique s'applique à partir du 13 octobre 2026. Toute modification sera annoncée sur cette page et dans une mise à jour de l'application au moins 7 jours avant son entrée en vigueur. Version 1.0</p>
+<p>Cette politique s'applique à partir du 15 octobre 2026. Toute modification sera annoncée sur cette page et dans une mise à jour de l'application au moins 7 jours avant son entrée en vigueur. La version 1.1 a été établie avant que l'application ne soit téléchargeable ; aucun utilisateur de l'application n'ayant été soumis à la version 1.0, elle s'applique dès sa publication.</p>
+<ul>
+<li>Version 1.1 · en vigueur le 15 octobre 2026</li>
+<li>Version 1.0 · en vigueur le 13 octobre 2026 · <a href="v1.0/fr.html">texte intégral</a></li>
+</ul>
+<p><strong>Modifications de la version 1.0 à la version 1.1</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Section</th>
+<th>1.0</th>
+<th>1.1</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>3. Historique de jeu</td>
+<td>les 3 jeux du Jeu du jour</td>
+<td>les 5 jeux du Jeu du jour</td>
+</tr>
+<tr>
+<td>3. Réglages et état du téléphone</td>
+<td>nombre et date des reprises avec publicité</td>
+<td>Ajout : nombre et date des parties de plus avec publicité, partie obtenue mais pas encore commencée</td>
+</tr>
+<tr>
+<td>4. Ce que « Effacer l'historique » conserve</td>
+<td>date d'installation, état d'achat, compteurs de publicité, pays de facturation, trace de l'accord</td>
+<td>Ajout : partie obtenue en regardant une publicité</td>
+</tr>
+<tr>
+<td>6.1 Quand une publicité s'affiche</td>
+<td>démarrage, reprise avec publicité</td>
+<td>Ajout : après le Jeu du jour, en appuyant sur « Une partie de plus (pub) » (jusqu'à 5 fois par jour)</td>
+</tr>
+<tr>
+<td>6.2 Données envoyées par le SDK</td>
+<td>adresse IP</td>
+<td>adresse IP (qui peut servir à estimer votre position approximative)</td>
+</tr>
+<tr>
+<td>12. Modifications</td>
+<td>—</td>
+<td>historique des versions, ce tableau, lien vers le texte intégral de la version 1.0</td>
+</tr>
+</tbody>
+</table></div>
 <p>Éditeur : Kim Junho (Mirang) · Contact : wnshroqkf@naver.com · Application : Sans se presser (Google Play, Android)</p>
 </article></main></body>
 </html>
