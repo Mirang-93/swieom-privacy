@@ -1,6 +1,8 @@
 """risk 방침 초안(md) → 게시용 HTML. 빈칸을 채우고, 남은 [자리 표시]가 있으면 실패한다.
 사용: [POLICY_DATE=YYYY-MM-DD] build_policy.py <초안 폴더> <출력 폴더> [파일 이름 접미사, 예: _v13]
-POLICY_DATE = 이번 판의 시행일(실제 게시일, 소급 금지). 없으면 언어별 '게시일 미정' 표시로 빌드한다 — 그 결과는 게시하지 않는다."""
+POLICY_DATE = 이번 판의 시행일(실제 게시일, 소급 금지 — 오늘보다 앞 날짜면 실패).
+없으면 언어별 '게시일 미정' 표시로 <출력 폴더>/_draft/ 에만 빌드하고 게시 파일(index.html 등)은 건드리지 않는다
+(_draft/ 는 .gitignore, Jekyll 도 _ 폴더를 게시하지 않는다)."""
 import datetime, os, re, sys, pathlib, markdown
 
 SRC, OUT = map(pathlib.Path, sys.argv[1:3])
@@ -15,10 +17,13 @@ EN_M = 'January February March April May June July August September October Nove
 FR_M = 'janvier février mars avril mai juin juillet août septembre octobre novembre décembre'.split()
 if DATE:
     d = datetime.date.fromisoformat(DATE)  # 형식이 틀리면 여기서 실패
+    if d < datetime.date.today():  # 시행일 소급 금지 (swieom-privacy 2d581a5, risk R-3)
+        sys.exit(f'실패: POLICY_DATE={DATE} 가 오늘({datetime.date.today()})보다 앞입니다. 시행일은 게시하는 날 이후로.')
     EFFECTIVE = {'ko': f'{d.year}년 {d.month}월 {d.day}일', 'en': f'{d.day} {EN_M[d.month - 1]} {d.year}',
                  'ja': f'{d.year}年{d.month}月{d.day}日', 'zh-Hant': f'{d.year} 年 {d.month} 月 {d.day} 日',
                  'fr': f"{'1er' if d.day == 1 else d.day} {FR_M[d.month - 1]} {d.year}"}
-else:  # 자리 표시: 대괄호를 쓰지 않아 빌드는 통과하고, 읽으면 미정인 것이 바로 보인다
+else:  # 자리 표시: 대괄호를 쓰지 않아 빌드는 통과하고, 읽으면 미정인 것이 바로 보인다. 게시 파일 대신 _draft/ 에만 쓴다 (risk R-1)
+    OUT = OUT / '_draft'
     EFFECTIVE = {'ko': '게시일 미정', 'en': 'date of posting (to be set)', 'ja': '掲載日未定',
                  'zh-Hant': '公告日期未定', 'fr': 'date de publication à fixer'}
 # 언어 코드 → (출력 파일, html lang, 링크 이름, 제목)
@@ -39,7 +44,7 @@ FILL = {
         ('- 전화: [전화번호 — 선택]\n', ''),
         ('[ ]개월', '3개월'),
         ('| [메일 서비스 회사 이름] |', '| 네이버 주식회사 |'),
-        ('[2단계 인증 등 실제 조치]', '2단계 인증'),
+        ('[2단계 인증 등 실제 조치]로', '2단계 인증으로'),  # 조사까지 바꿈 ('인증로' 방지)
         ('[수사기관 이름·연락처 — 게시 직전 재확인]', '대검찰청: 국번 없이 1301 (www.spo.go.kr)'),
         ('[시행일]', EFFECTIVE['ko']), ('[1.1 시행일]', '2026년 10월 20일'),
     ],
@@ -60,7 +65,7 @@ FILL = {
         ('（[運営者住所 — 回答用]）', ''), ('- 代表者：[法人の場合のみ代表者名]\n', ''),
         ('[ ] か月', '3 か月'),
         ('[メールサービス事業者名]（所在国：[国名]）', 'NAVER Corporation（所在国：大韓民国）'),
-        ('[二段階認証など実際の措置]', '二段階認証'),
+        ('[二段階認証など実際の措置] で', '二段階認証で'),
         ('[施行日]', EFFECTIVE['ja']), ('[1.1 施行日]', '2026年10月20日'),
     ],
     'zh-Hant': [
@@ -68,7 +73,7 @@ FILL = {
         ('[營運者名稱]', NAME), ('[個資聯絡信箱]', MAIL), ('[ ] 個月', '3 個月'),
         ('韓國（營運者），[郵件服務所在國家]（電子郵件服務）', '韓國（營運者與電子郵件服務）'),
         ('[郵件服務業者名稱]', 'NAVER Corporation'),
-        ('[兩步驟驗證等實際措施]', '兩步驟驗證'),
+        ('以 [兩步驟驗證等實際措施] 保護', '以兩步驟驗證保護'),
         ('[施行日]', EFFECTIVE['zh-Hant']), ('[1.1 施行日]', '2026 年 10 月 20 日'),
     ],
     'fr': [
@@ -135,8 +140,8 @@ def build(code):
 </html>
 """)
 
-OUT.mkdir(exist_ok=True)
+OUT.mkdir(parents=True, exist_ok=True)
 for c in LANGS:
     build(c)
 print('ok', sorted(p.name for p in OUT.glob('*.html')))
-print('시행일', DATE or '자리 표시(게시일 미정) — 이 결과는 게시하지 않는다. 게시 때 POLICY_DATE=YYYY-MM-DD 로 다시 빌드')
+print('시행일', DATE or f'자리 표시(게시일 미정) — {OUT} 에만 썼다(게시 파일은 그대로). 게시 때 POLICY_DATE=YYYY-MM-DD 로 다시 빌드')
