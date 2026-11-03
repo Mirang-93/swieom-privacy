@@ -1,6 +1,7 @@
 """risk 방침 초안(md) → 게시용 HTML. 빈칸을 채우고, 남은 [자리 표시]가 있으면 실패한다.
-사용: build_policy.py <초안 폴더> <출력 폴더> [파일 이름 접미사, 예: _v12]"""
-import re, sys, pathlib, markdown
+사용: [POLICY_DATE=YYYY-MM-DD] build_policy.py <초안 폴더> <출력 폴더> [파일 이름 접미사, 예: _v13]
+POLICY_DATE = 이번 판의 시행일(실제 게시일, 소급 금지). 없으면 언어별 '게시일 미정' 표시로 빌드한다 — 그 결과는 게시하지 않는다."""
+import datetime, os, re, sys, pathlib, markdown
 
 SRC, OUT = map(pathlib.Path, sys.argv[1:3])
 SUFFIX = sys.argv[3] if len(sys.argv) > 3 else ''
@@ -8,6 +9,18 @@ NAME, MAIL = 'Kim Junho (Mirang)', 'wnshroqkf@naver.com'
 KO_NAME = '김준호(Mirang)'
 ADDR_EN = '3F, 41 Gwongwang-ro 56beon-gil, Gwonseon-gu, Suwon-si, Gyeonggi-do 16556, Republic of Korea'
 BASE = 'https://mirang-93.github.io/swieom-privacy/'
+
+DATE = os.environ.get('POLICY_DATE', '').strip()
+EN_M = 'January February March April May June July August September October November December'.split()
+FR_M = 'janvier février mars avril mai juin juillet août septembre octobre novembre décembre'.split()
+if DATE:
+    d = datetime.date.fromisoformat(DATE)  # 형식이 틀리면 여기서 실패
+    EFFECTIVE = {'ko': f'{d.year}년 {d.month}월 {d.day}일', 'en': f'{d.day} {EN_M[d.month - 1]} {d.year}',
+                 'ja': f'{d.year}年{d.month}月{d.day}日', 'zh-Hant': f'{d.year} 年 {d.month} 月 {d.day} 日',
+                 'fr': f"{'1er' if d.day == 1 else d.day} {FR_M[d.month - 1]} {d.year}"}
+else:  # 자리 표시: 대괄호를 쓰지 않아 빌드는 통과하고, 읽으면 미정인 것이 바로 보인다
+    EFFECTIVE = {'ko': '게시일 미정', 'en': 'date of posting (to be set)', 'ja': '掲載日未定',
+                 'zh-Hant': '公告日期未定', 'fr': 'date de publication à fixer'}
 # 언어 코드 → (출력 파일, html lang, 링크 이름, 제목)
 LANGS = {
     'ko': ('index.html', 'ko', '한국어', '쉬엄쉬엄 개인정보처리방침'),
@@ -28,7 +41,7 @@ FILL = {
         ('| [메일 서비스 회사 이름] |', '| 네이버 주식회사 |'),
         ('[2단계 인증 등 실제 조치]', '2단계 인증'),
         ('[수사기관 이름·연락처 — 게시 직전 재확인]', '대검찰청: 국번 없이 1301 (www.spo.go.kr)'),
-        ('[시행일]', '2026년 10월 20일'), ('[1.1 시행일]', '2026년 10월 20일'),
+        ('[시행일]', EFFECTIVE['ko']), ('[1.1 시행일]', '2026년 10월 20일'),
     ],
     'en': [
         ('[operator name]', NAME), ('[privacy email]', MAIL), ('[ ] months', '3 months'),
@@ -40,7 +53,7 @@ FILL = {
          'protection (adequacy decision of 17 December 2021); Google relies on the transfer safeguards '
          'described in its own privacy policy.'),
         (' [EU representative: name and address — or delete this sentence if not required.]', ''),
-        ('[effective date]', '20 October 2026'), ('[1.1 effective date]', '20 October 2026'),
+        ('[effective date]', EFFECTIVE['en']), ('[1.1 effective date]', '20 October 2026'),
     ],
     'ja': [
         ('[運営者名]', NAME), ('[個人情報お問い合わせメール]', MAIL),
@@ -48,7 +61,7 @@ FILL = {
         ('[ ] か月', '3 か月'),
         ('[メールサービス事業者名]（所在国：[国名]）', 'NAVER Corporation（所在国：大韓民国）'),
         ('[二段階認証など実際の措置]', '二段階認証'),
-        ('[施行日]', '2026年10月20日'), ('[1.1 施行日]', '2026年10月20日'),
+        ('[施行日]', EFFECTIVE['ja']), ('[1.1 施行日]', '2026年10月20日'),
     ],
     'zh-Hant': [
         ('[營運者名稱]，[地址]，電子郵件 [個資聯絡信箱]', f'{NAME}，地址 {ADDR_EN}，電子郵件 {MAIL}'),
@@ -56,7 +69,7 @@ FILL = {
         ('韓國（營運者），[郵件服務所在國家]（電子郵件服務）', '韓國（營運者與電子郵件服務）'),
         ('[郵件服務業者名稱]', 'NAVER Corporation'),
         ('[兩步驟驗證等實際措施]', '兩步驟驗證'),
-        ('[施行日]', '2026 年 10 月 20 日'), ('[1.1 施行日]', '2026 年 10 月 20 日'),
+        ('[施行日]', EFFECTIVE['zh-Hant']), ('[1.1 施行日]', '2026 年 10 月 20 日'),
     ],
     'fr': [
         ('[nom de l\'éditeur], [adresse], [e-mail de contact vie privée].',
@@ -69,7 +82,7 @@ FILL = {
          'décision d\'adéquation de la Commission européenne pour la République de Corée (17 décembre 2021) ; '
          'pour Google, les garanties décrites dans ses propres règles de confidentialité'),
         ('[mesures réelles, ex. validation en deux étapes]', 'la validation en deux étapes'),
-        ('[date d\'entrée en vigueur]', '20 octobre 2026'), ('[date 1.1]', '20 octobre 2026'),
+        ('[date d\'entrée en vigueur]', EFFECTIVE['fr']), ('[date 1.1]', '20 octobre 2026'),
     ],
 }
 
@@ -100,8 +113,8 @@ def build(code):
     lines = md.split('\n')
     md = '\n'.join(l if not (item.match(l) and i and lines[i-1].strip() and not item.match(lines[i-1]))
                     else '\n' + l for i, l in enumerate(lines))
-    # 버전 치환('Version 1.2'→'1.1' 등)이 남아 있으면 이력 줄이 사라진다 → 실패
-    assert re.search(r'1\.2\D{1,6}(시행|施行|effective|en vigueur)', md), (code, 'v1.2 이력 줄 없음')
+    # 버전 치환('Version 1.3'→'1.2' 등)이 남아 있으면 이력 줄이 사라진다 → 실패
+    assert re.search(r'1\.3\D{1,6}(시행|施行|effective|en vigueur)', md), (code, 'v1.3 이력 줄 없음')
     left = [m for m in re.findall(r'\[[^\]]*\](?!\()', md)]
     assert not left, (code, left)
     body = markdown.markdown(md, extensions=['tables'])
@@ -126,3 +139,4 @@ OUT.mkdir(exist_ok=True)
 for c in LANGS:
     build(c)
 print('ok', sorted(p.name for p in OUT.glob('*.html')))
+print('시행일', DATE or '자리 표시(게시일 미정) — 이 결과는 게시하지 않는다. 게시 때 POLICY_DATE=YYYY-MM-DD 로 다시 빌드')

@@ -23,10 +23,10 @@ th{background:var(--bg)}</style>
 <ul>
 <li>There are no accounts, and we run no server that collects your information.</li>
 <li>Your game records are saved on your phone. They may also be included in your phone's backup: Google backup on Android, iCloud Backup or a computer backup on iPhone.</li>
-<li>To show the right purchase terms, the app stores your billing country (Google Play or App Store) and, in places such as the EU and Taiwan, the record of your consent before payment — only on your phone. They are not sent to us.</li>
-<li>While you use the app for free, it shows Google ads, and Google collects information such as your advertising ID directly. In the EEA, UK and Switzerland, Google's consent form appears first. On iPhone, Apple's App Tracking Transparency prompt asks whether to allow tracking; Google gets the advertising identifier (IDFA) only if you allow it.</li>
-<li>Google Play (Android) or Apple's App Store (iPhone) handles payment. We never receive your card details.</li>
-<li>The only personal information we receive is what you send us by email (questions, refunds) and the order information Google Play gives sellers. For App Store purchases, Apple doesn't give us information that identifies the buyer.</li>
+<li>Settings and status such as your daily free rounds and ad counts are stored only on your phone. They are not backed up or sent to us.</li>
+<li>The app shows Google ads, and Google collects information such as your advertising ID directly. In the EEA, UK and Switzerland, Google's consent form appears first. On iPhone, Apple's App Tracking Transparency prompt asks whether to allow tracking; Google gets the advertising identifier (IDFA) only if you allow it.</li>
+<li>This version of the app has no payments (in-app purchases). It doesn't collect payment or order information.</li>
+<li>The only personal information we receive is what you send us by email.</li>
 </ul>
 <h2>1. Information we handle</h2>
 <p><strong>1.1 Information we receive</strong></p>
@@ -40,18 +40,13 @@ th{background:var(--bg)}</style>
 </thead>
 <tbody>
 <tr>
-<td>You email us (questions, refunds, cancellations)</td>
-<td>Email address, name (if you include it), order number, your message</td>
-<td>To reply, process refunds or cancellations, and handle complaints</td>
-</tr>
-<tr>
-<td>You buy "Choose &amp; Play + no ads" in the Android app</td>
-<td>Order information Google Play provides to sellers: order number, product, amount and tax, billing country, payment and refund status and history, and (when looking up an order) the buyer's email address</td>
-<td>To confirm purchases, give refunds, keep transaction records</td>
+<td>You email us</td>
+<td>Email address, name (if you include it), your message</td>
+<td>To reply and handle complaints</td>
 </tr>
 </tbody>
 </table></div>
-<p>In the iPhone app, Apple sells and collects payment on our behalf (section 5). App Store Connect shows us only sales totals by country, not who bought. If you email us the order ID from your Apple receipt, we handle it as the order number in the first row.</p>
+<p>This version of the app has no payments, so we receive no order information from Google Play or the App Store (section 5).</p>
 <p><strong>1.2 Information kept only on your phone (never sent to us)</strong></p>
 <div class="tbl"><table>
 <thead>
@@ -66,16 +61,8 @@ th{background:var(--bg)}</style>
 <td>Show records, attendance, difficulty progress, extra chances, resume today's play</td>
 </tr>
 <tr>
-<td>Phone settings and status: sound on/off, whether a purchase is confirmed or pending, how many ads you've watched to continue and for one more round, with their dates; a round you've earned by watching an ad but not started yet; date the start-up ad was tried, last-used date</td>
-<td>Keep settings and purchase status, apply ad limits, keep a round you've earned even if the app closes</td>
-</tr>
-<tr>
-<td>Billing country (2-letter code — from Google Play on Android, the App Store on iPhone)</td>
-<td>Show seller information and purchase terms that match the law of that country</td>
-</tr>
-<tr>
-<td>Pre-purchase consent record (only when paying in the EU/EEA, Taiwan and some other countries): time of consent, wording and language, billing country, product ID, a pending-approval flag, order number after payment (Apple transaction ID on iPhone)</td>
-<td>Lets you check and save, on the purchase terms screen (the seller info link on the About screen), that you agreed before paying</td>
+<td>Phone settings and status: sound on/off; how many free Choose &amp; Play rounds you've used today, with the date; how many ads you've watched to continue and for one more round, with their dates; a round you've earned by watching an ad but not started yet; date the start-up ad was tried; whether you've seen the how-to-play guide; last-used date</td>
+<td>Keep settings, apply the daily free-round and ad limits, keep a round you've earned even if the app closes, show the how-to-play guide only once</td>
 </tr>
 <tr>
 <td>Your Google ad consent choice (where Google's consent form appears) — stored by the Google ads SDK</td>
@@ -88,44 +75,101 @@ th{background:var(--bg)}</style>
 </tbody>
 </table></div>
 <p>The app doesn't use your name, phone number, contacts, photos, GPS location or microphone. The Android app asks for no permissions; the iPhone app asks only for Apple's App Tracking Transparency permission, and every feature works whether or not you allow it.</p>
-<p><strong>1.3 Information Google and Apple collect directly</strong> — see sections 4 and 5.</p>
+<p><strong>1.3 Information Google collects directly</strong> — see section 4.</p>
 <h2>2. How long we keep it</h2>
 <ul>
-<li>Emails about purchases: kept as long as Korean e-commerce law requires us to keep transaction records (contracts and cancellations 5 years, payments and delivery 5 years, complaints and disputes 3 years), then deleted. Other emails: deleted within 3 months after we reply.</li>
-<li>Information on your phone: until you delete the app or use <strong>About → Delete records</strong>. "Delete records" erases game records (attendance, rounds, best scores, solved puzzles, today's play). It does not erase the install date, purchase status, ad counts (continue and one more round), a round you've earned by watching an ad, billing country or the pre-purchase consent record. Deleting the app erases everything on the phone.</li>
-<li>Backups. Android: if your phone's Google backup is on, one game-records file may be backed up to your own Google account and moved to a new phone; purchase status, ad counts, billing country and the consent record are never backed up. iPhone: if iCloud Backup is on or you back up your iPhone to a computer, the game-records file is included in that backup and may move to a new iPhone; the app marks the file holding purchase status, ad counts, billing country and the consent record as excluded from backup, but values Google's ads SDK stores on the iPhone (such as your ad consent choice and SDK settings) may be included. Google and Apple manage backups under your account and device settings. We can't see your backup, and we can't promise your records will come back after reinstalling.</li>
+<li>Emails: deleted within 3 months after we reply. As the app has no payments, we keep no transaction records.</li>
+<li>Information on your phone: until you delete the app or use <strong>About → Delete records</strong>. "Delete records" erases game records (attendance, rounds, best scores, solved puzzles, today's play). It does not erase the install date, today's free-round count, ad counts (continue and one more round) or a round you've earned by watching an ad. Deleting the app erases everything on the phone.</li>
+<li>Backups. Android: if your phone's Google backup is on, one game-records file may be backed up to your own Google account and moved to a new phone; settings and status such as free-round and ad counts are never backed up. iPhone: if iCloud Backup is on or you back up your iPhone to a computer, the game-records file is included in that backup and may move to a new iPhone; the app marks the file holding settings and status such as free-round and ad counts as excluded from backup, but values Google's ads SDK stores on the iPhone (such as your ad consent choice and SDK settings) may be included. Google and Apple manage backups under your account and device settings. We can't see your backup, and we can't promise your records will come back after reinstalling.</li>
 </ul>
 <h2>3. Sharing</h2>
-<p>We don't sell or share the information we receive, except where the law requires it. (Separately, Google's ad SDK collects data directly, as described in section 4, and Google or Apple handles payment, as described in section 5.) We use NAVER Corporation (Republic of Korea) to receive and store emails.</p>
+<p>We don't sell or share the information we receive, except where the law requires it. (Separately, Google's ad SDK collects data directly, as described in section 4.) We use NAVER Corporation (Republic of Korea) to receive and store emails.</p>
 <h2>4. Ads (Google AdMob)</h2>
 <ol>
-<li>The app includes Google AdMob (Google Mobile Ads SDK). Free users see an ad when the app starts, when they choose to watch an ad to continue, and when they finish Today's play and tap "Watch an ad for one more round" (up to 5 times a day). Ads to continue or for one more round appear only when you tap the button. There are no banner or interstitial ads.</li>
+<li>The app includes Google AdMob (Google Mobile Ads SDK). You see an ad when the app starts, when you choose to watch an ad to continue (up to 3 times a day), and when you tap "Watch an ad for one more round" after using today's 10 free Choose &amp; Play rounds (up to 5 times a day). Ads to continue or for one more round appear only when you tap the button. There are no banner or interstitial ads.</li>
 <li>The SDK sends Google device identifiers (on Android, your advertising ID and app set ID; on iPhone, the advertising identifier (IDFA) only if you allow tracking, and developer-scoped identifiers such as the IDFV), IP address (which may be used to estimate your general location), app interactions (app launches, taps, ad video views), diagnostics and, where applicable, your ad consent choice. Google uses this to show and measure ads, prevent fraud and, if allowed, personalize ads. How Google uses information from apps: <a href="https://policies.google.com/technologies/partner-sites">https://policies.google.com/technologies/partner-sites</a> On iPhone, the app asks with Apple's App Tracking Transparency prompt before showing ads (after Google's consent form where that appears); every feature works whether or not you allow tracking. Ad performance may also be measured through Apple's SKAdNetwork.</li>
-<li>In the EEA, the UK, Switzerland and other places where the law requires consent, Google's consent form appears when you open the app. You can use the app even if you don't consent; Google may then show non-personalized or limited ads. You can change your choice at any time with <strong>About → Ad privacy settings</strong>. This button appears only where consent is required and only while you haven't bought "Choose &amp; Play + no ads".</li>
-<li>After you buy "Choose &amp; Play + no ads", the app no longer requests or shows ads. The ads SDK stays in the app for free users and may still contact Google when the app runs.</li>
+<li>In the EEA, the UK, Switzerland and other places where the law requires consent, Google's consent form appears when you open the app. You can use the app even if you don't consent; Google may then show non-personalized or limited ads. You can change your choice at any time with <strong>About → Ad privacy settings</strong>. This button appears only where consent is required.</li>
 <li>Your choices: on Android, delete or reset your advertising ID in your phone's <strong>Settings → Privacy → Ads</strong> (menu names vary by phone) and turn off Android ad privacy features in the same menu where supported; on iPhone, turn off tracking for this app in <strong>Settings → Privacy &amp; Security → Tracking</strong>; manage personalized ads at <a href="https://myadcenter.google.com;">https://myadcenter.google.com;</a> use <strong>About → Ad privacy settings</strong> where shown; or delete the app.</li>
 </ol>
 <h2>5. Payment</h2>
-<p>Google Play (Android app) or Apple's App Store (iPhone app) processes payment; we never receive card details (see the Google Payments privacy notice or Apple's Privacy Policy, <a href="https://www.apple.com/legal/privacy/">https://www.apple.com/legal/privacy/</a>). On the App Store, an Apple company sells and collects payment on our behalf and handles refunds (United States: Apple Inc.; Japan: iTunes K.K.; Korea: Apple Services Pte. Ltd.; Taiwan and Hong Kong: Apple Distribution International Ltd.). Apple doesn't give us your name, Apple Account or other details that identify you; App Store Connect shows us only sales totals by country. The app asks Google Play or the App Store on your phone whether you've bought "Choose &amp; Play + no ads" and keeps the answer only on your phone (excluded from backups); on a new phone or after reinstalling, it checks again with the same Google account or Apple Account (<strong>Restore purchase</strong>). When you open the purchase screen, the app asks Google Play or the App Store for your billing country to show the right terms. The billing country and the consent record stay on your phone; they leave it only if you press "Save or share these terms" and send them yourself.</p>
+<p>This version of the app has no payments (in-app purchases). The app doesn't ask Google Play or the App Store about purchases or your billing country, and we don't receive or keep payment or order information. If an earlier version with payments stored a purchase status, billing country or pre-purchase consent record on your phone, those values may stay on your phone only; they are not sent to us or backed up, and they are deleted when you delete the app.</p>
 <h2>6. Your rights</h2>
-<p>You can ask us to access, correct or delete the personal information we hold, or to stop using it, by emailing wnshroqkf@naver.com. We'll reply without undue delay. We may keep transaction records the law requires us to keep. Information on your phone you can delete yourself (section 2). For information Google collects, contact Google: <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a> — for information Apple processes for payment, contact Apple: <a href="https://www.apple.com/legal/privacy/">https://www.apple.com/legal/privacy/</a></p>
+<p>You can ask us to access, correct or delete the personal information we hold, or to stop using it, by emailing wnshroqkf@naver.com. We'll reply without undue delay. Information on your phone you can delete yourself (section 2). For information Google collects, contact Google: <a href="https://policies.google.com/privacy">https://policies.google.com/privacy</a></p>
 <h2>7. Children</h2>
 <p>The app is made for adults and is not directed to children under 13. We don't knowingly collect children's personal information; if we learn we have, we delete it.</p>
 <h2>8. Security</h2>
 <p>We run no server and handle only the minimum. App data is kept in storage that Android or iOS lets only this app read. Our email, Google Play Console and App Store Connect accounts are protected by two-step verification. Google says AdMob data is encrypted in transit (TLS).</p>
 <h2>9. Regional information</h2>
 <p><strong>United States.</strong> We don't sell personal information. Google's ad SDK collects data directly as described in section 4. The app has no web browsing, so it receives no browser "Do Not Track" signals and has nothing to respond to. Depending on your state you may have additional privacy rights; email us and we'll help.</p>
-<p><strong>EEA, UK and Switzerland.</strong> We are the controller for the information in section 1.1. Legal bases: replying to you and handling refunds — performance of a contract and our legitimate interest in handling requests; keeping transaction records — our legitimate interest in proving transactions; ads — the consent you give in Google's consent form. Your information may be processed in the Republic of Korea (where we are) and in the United States and other countries (Google). The European Commission has recognised the Republic of Korea as ensuring an adequate level of protection (adequacy decision of 17 December 2021); Google relies on the transfer safeguards described in its own privacy policy. You have the rights of access, rectification, erasure, restriction, objection and data portability, and you can withdraw ad consent at any time (About → Ad privacy settings). You may complain to your local data protection authority (in France: CNIL, www.cnil.fr).</p>
+<p><strong>EEA, UK and Switzerland.</strong> We are the controller for the information in section 1.1. Legal bases: replying to you — our legitimate interest in handling requests; ads — the consent you give in Google's consent form. Your information may be processed in the Republic of Korea (where we are) and in the United States and other countries (Google). The European Commission has recognised the Republic of Korea as ensuring an adequate level of protection (adequacy decision of 17 December 2021); Google relies on the transfer safeguards described in its own privacy policy. You have the rights of access, rectification, erasure, restriction, objection and data portability, and you can withdraw ad consent at any time (About → Ad privacy settings). You may complain to your local data protection authority (in France: CNIL, www.cnil.fr).</p>
 <p><strong>Japan.</strong> Japanese-language information required by the Act on the Protection of Personal Information (including information sent outside the app) is on the 日本語 page.</p>
 <p><strong>Taiwan and Hong Kong.</strong> Information required by Taiwan's Personal Data Protection Act and Hong Kong's Personal Data (Privacy) Ordinance is on the 繁體中文 page.</p>
 <p><strong>Korea.</strong> The Korean-language page follows Korea's Personal Information Protection Act.</p>
 <h2>10. Changes</h2>
-<p>This policy applies from 20 October 2026. We'll post changes on this page and in an app update at least 7 days before they take effect; earlier versions stay at the bottom of this page. Version 1.1 was made before the app became available for download; as no app user was covered by version 1.0, it applies from the day it was posted. Version 1.2 adds the iPhone app before it is released; nothing changes for the Android app.</p>
+<p>This policy applies from date of posting (to be set). We'll post changes on this page and in an app update at least 7 days before they take effect; earlier versions stay at the bottom of this page. Version 1.1 was made before the app became available for download; as no app user was covered by version 1.0, it applies from the day it was posted. Version 1.2 adds the iPhone app before it is released; nothing changes for the Android app. Version 1.3 reflects that the app's payment feature has been turned off: payment-related processing (order information, purchase status, billing country, pre-purchase consent record) is removed, and today's free-round count and whether you've seen the how-to-play guide, kept only on your phone, are added.</p>
 <ul>
-<li>Version 1.2 · effective 20 October 2026</li>
+<li>Version 1.3 · effective date of posting (to be set)</li>
+<li>Version 1.2 · effective 20 October 2026 · <a href="v1.2/en.html">full text</a></li>
 <li>Version 1.1 · effective 20 October 2026 · <a href="v1.1/en.html">full text</a></li>
 <li>Version 1.0 · effective 13 October 2026 · <a href="v1.0/en.html">full text</a></li>
 </ul>
+<p><strong>What changed from 1.2 to 1.3</strong></p>
+<div class="tbl"><table>
+<thead>
+<tr>
+<th>Section</th>
+<th>1.2</th>
+<th>1.3</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>At a glance</td>
+<td>billing country and pre-purchase consent record stored; payment by Google Play or the App Store; Google Play order information</td>
+<td>no payments in this version; no payment or order information collected; daily free rounds and ad counts kept only on the phone (not backed up)</td>
+</tr>
+<tr>
+<td>1.1, 1.3</td>
+<td>emails about refunds (order number), Google Play order information, Apple sales totals, Google and Apple collecting payment data directly</td>
+<td>emails only; order information row and payment data collection removed</td>
+</tr>
+<tr>
+<td>1.2</td>
+<td>purchase confirmed or pending, billing country, pre-purchase consent record</td>
+<td>removed. Added: free Choose &amp; Play rounds used today and the date, whether you've seen the how-to-play guide</td>
+</tr>
+<tr>
+<td>2 How long we keep it</td>
+<td>transaction records kept under Korean e-commerce law (5 and 3 years); "Delete records" and backups leave out purchase status, billing country, consent record</td>
+<td>no transaction records; free-round and ad counts</td>
+</tr>
+<tr>
+<td>3 Sharing, 9 EEA</td>
+<td>payment handled by Google or Apple; legal bases for refunds and transaction records</td>
+<td>removed</td>
+</tr>
+<tr>
+<td>4.1, 4.3, 4.4 Ads</td>
+<td>ads for free users; one more round after Today's play; button only before purchase; no ads after purchase</td>
+<td>continue ads up to 3 times a day; one more round after today's 10 free Choose &amp; Play rounds (up to 5 times a day); purchase paragraph removed (your choices is now 4.4)</td>
+</tr>
+<tr>
+<td>5 Payment</td>
+<td>Google Play and App Store payment, Apple companies, refunds, purchase check and Restore purchase, billing country</td>
+<td>no payments in this version; values left by an earlier version</td>
+</tr>
+<tr>
+<td>6 Rights</td>
+<td>transaction records may be kept; contact Apple about payment data</td>
+<td>removed</td>
+</tr>
+<tr>
+<td>10 Changes</td>
+<td>—</td>
+<td>version 1.3 sentence, history, this table, link to the full text of 1.2</td>
+</tr>
+</tbody>
+</table></div>
 <p><strong>What changed from 1.1 to 1.2</strong></p>
 <div class="tbl"><table>
 <thead>
